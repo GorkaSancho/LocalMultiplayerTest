@@ -1,15 +1,32 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField] float speed = 5f;
+    [SerializeField] float jumpHeight = 5f;
+    Vector2 moveInput;
+
     void Start()
+    {
+
+    }
+
+    void Update()
+    {
+        transform.Translate(moveInput * speed * Time.deltaTime);
+    }
+    
+    public void OnJump()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnMove(InputValue value) //Haurem de mirar si es adalt aball dreta esquerra
+    {
+        moveInput = value.Get<Vector2>();
+    }
+    public void OnRespawn()
     {
         
     }
